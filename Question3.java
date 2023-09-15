@@ -1,6 +1,4 @@
-import java.util.Random;
-import java.util.HashMap;
-
+import java.util.*;
 interface PizzaOrderSystem {
     int placeOrder(String pizzaType, int qnty);
 
@@ -33,13 +31,11 @@ class PizzaOrderProcessor implements PizzaOrderSystem {
     public int placeOrder(String pizzaType, int qnty) {
         this.pizzaType = pizzaType;
         this.quantity = qnty;
-
-        Random ran = new Random();
-        orderId = ran.nextInt(1000);
+        orderId = (int) (1000*Math.random());
         isReady = true;
         System.out.println("Your order has placed for " + quantity + " " + this.pizzaType + " Pizza Successfully :)");
         System.out.println("Your order ID is : " + orderId);
-        return orderId;
+        return this.orderId;
     }
 
     public String checkOrderStatus(int orderId) {
